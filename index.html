@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niranjan MD</title>
-
+    
+    <!-- External Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	 <link rel="stylesheet" href="assets/styles.css">
     
-    <!-- Meta Tags -->
+    <!-- Fonts: Outfit, Plus Jakarta Sans, AND Syne -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+   <!-- Meta Tags -->
     <meta name="description" content="Niranjan MD is a tech nerd enjoying finding solutions to absurd and pointless probelms.">
     <meta name="author" content="Niranjan MD">
     <meta name="robots" content="index, follow">
@@ -58,231 +64,303 @@
       }
     }
     </script>
-	
+
 </head>
 <body>
+
+    <!-- CINEMATIC PAGE LOADER -->
     <div class="loader">
+        <div class="loader-panel left"></div>
+        <div class="loader-panel right"></div>
         <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <div class="loader-text">Loading...</div>
+            NIMD.
+            <div class="loader-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </div>
 
+    <!-- FLOATING HEADER -->
     <header>
-        <div class="container nav-container">
-            <a href="https://youtu.be/2YE30L5jK2I" target="_blank" class="logo">nimd.me</a>
-            <button class="mobile-menu-button" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <!-- <a href="#skills">Skills</a> -->
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <button class="theme-toggle" aria-label="Toggle theme">
+        <div class="nav-glass">
+            <a href="#" class="logo">nimd<span>.</span>me</a>
+            
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Work</a>
+					 <a href="#contact" class="nav-link">Contact</a>
+                <button class="theme-toggle" aria-label="Toggle Theme">
                     <i class="fas fa-moon"></i>
                 </button>
             </nav>
+
+            <button class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
     <main>
+        <!-- HERO SECTION -->
         <section id="home" class="hero">
-            <div class="hero-background"></div>
-            <div class="container hero-content">
-                <h1 data-aos="fade-up" data-aos-duration="1200">Niranjan MD</h1>
-                <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200">
-                    Crafting <span class="typed-text"></span>
+            <canvas id="hero-canvas"></canvas>
+            <div class="container hero-container" data-aos="fade-up">
+                
+                <!-- Wrapped for Left Alignment (Start of Name) -->
+                <div class="hero-text-block">
+                    <div class="hero-eyebrow">
+                       Hello, I am
+                    </div>
+                    <h1 class="hero-title">
+                        Niranjan <span class="gradient-text">MD</span>
+                    </h1>
+                </div>
+
+                <p class="hero-subtitle">
+                    Crafting <span class="typed-text" style="color: var(--accent-color); font-weight: 600;"></span>
                 </p>
-                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1200">
-                    <a href="#projects" class="button button-primary">View My Work</a>
-                    <a href="#contact" class="button button-secondary">Get in Touch</a>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
                 </div>
             </div>
         </section>
 
+        <!-- ABOUT SECTION (Asymmetrical Layout) -->
         <section id="about" class="about">
-            <div class="container about-container">
-                <div class="about-image" data-aos="fade-right">
-                    <img src="assets/her-art.webp" alt="Profile picture placeholder"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                    >
-                    <div class="about-image-placeholder" style="display:none;">
-                        <i class="fas fa-user"></i>
+            <div class="container about-grid">
+                <div class="about-content" data-aos="fade-right">
+                    <!-- Title is Left Aligned by CSS Exception -->
+                    <h2 class="section-title">Who is Niranjan?</h2>
+                    <p>
+                        I'm a passionate tech nerd with a knack for building, exploring and enjoying tech and technical solutions. My journey in tech is driven by love for technology, networking, computers and making life easier with technological innovations.
+                    </p>
+                    <p>
+                       In my free time, you can find me exploring music, art, cinema or getting into heated arguments with strangers online.
+                    </p>
+                    
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <h3>5+</h3>
+                            <p>Years Exploring</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>7+</h3>
+                            <p>Projects</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>100%</h3>
+                            <p>Caffeine Fueled</p>
+                        </div>
                     </div>
                 </div>
-                <div class="about-content" data-aos="fade-left" data-aos-delay="200">
-                    <h2>About Me</h2>
-                    <p>
-                        Hello! I'm Niranjan, a passionate tech nerd with a knack for building, exploring and enjoying tech and technical solutions.
-                        My journey in tech is driven by love for technology, networking, computers and making life easier with technological innovations.
-                    </p>
-                    <p>
-                        In my free time, you can find me exploring music, art, cinema or getting into heated arguments with strangers online.
-                    </p>
-                    <a href="#contact" class="button button-secondary">Let's Connect</a>
+                
+                <div class="about-visual" data-aos="fade-left">
+                    <div class="about-card">
+                        <img src="assets/her-art.webp" alt="Niranjan MD" onerror="this.style.display='none'; this.parentElement.style.background='var(--accent-color)'; this.parentElement.innerHTML='<div style=\'height:100%;display:flex;align-items:center;justify-content:center;color:white;font-size:4rem;\'><i class=\'fas fa-user\'></i></div>'">
+                    </div>
+                    <div class="about-badge">
+                        <div class="badge-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1rem; margin:0;">Problem Solver</h4>
+                            <span style="font-size: 0.8rem; color: var(--text-light);">Always curious</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-			<!--
+        <!-- SKILLS SECTION (Glass Tiles) -->
         <section id="skills" class="skills">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Skills & Toolkit</h2>
+                <h2 class="section-title">My Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="100">
-                        <div class="skill-card-header">
-                            <div class="skill-icon"><i class="fas fa-code"></i></div>
-                            <h3>Frontend</h3>
-                        </div>
-                        <ul class="skill-list">
-                            <li>HTML5</li>
-                            <li>CSS3 & SASS</li>
-                            <li>JavaScript (ES6+)</li>
-                            <li>React</li>
-                            <li>Tailwind CSS</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="250">
-                        <div class="skill-card-header">
-                            <div class="skill-icon"><i class="fas fa-server"></i></div>
-                            <h3>Backend</h3>
-                        </div>
-                        <ul class="skill-list">
-                            <li>Node.js</li>
-                            <li>Express</li>
-                            <li>Python</li>
-                            <li>Firebase</li>
-                            <li>REST APIs</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="400">
-                        <div class="skill-card-header">
-                            <div class="skill-icon"><i class="fas fa-tools"></i></div>
-                            <h3>Tools & Methods</h3>
-                        </div>
-                        <ul class="skill-list">
-                            <li>Git & GitHub</li>
-                            <li>VS Code</li>
-                            <li>Figma</li>
-                            <li>Responsive Design</li>
-                            <li>Agile / Scrum</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>  -->
 
-        <section id="projects" class="projects">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Featured Projects</h2>
-                <div class="projects-grid">
-                    
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="project-image"><img src="assets/projects/short.png" alt="Tiny Links URL Shortener" loading="lazy"></div>
-                        <div class="project-info">
-                            <h3 class="project-title">URL Shortener</h3>
-                            <p class="project-description">A robust and functional URL Shortening and Lookup frontend.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">HTML</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://tiny.nimd.me" target="_blank" class="project-link button-primary"><i class="fas fa-external-link-alt"></i> Live</a>
-                                <a href="https://go.nimd.me/github/URL-Shortener" target="_blank" class="project-link button-secondary"><i class="fab fa-github"></i> Source</a>
-                            </div>
-                        </div>
+							<div class="skill-card" data-aos="fade-up" data-aos-delay="250">
+                        <i class="fa-brands fa-debian"></i>
+                        <span>Linux</span>
                     </div>
-
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="250">
-                        <div class="project-image"><img src="assets/projects/reimage.png" alt="ReImage Image Editor" loading="lazy"></div>
-                        <div class="project-info">
-                            <h3 class="project-title">ReImage</h3>
-                            <p class="project-description">Free online image editor to convert, resize and optimize images.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">HTML</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://reimage.nimd.me" target="_blank" class="project-link button-primary"><i class="fas fa-external-link-alt"></i> Live</a>
-                                <a href="https://go.nimd.me/github/ReImage-Image-Manipulator" target="_blank" class="project-link button-secondary"><i class="fab fa-github"></i> Source</a>
-                            </div>
-                        </div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fa-brands fa-docker"></i>
+                        <span>Docker</span>
                     </div>
-                    
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="project-image"><img src="assets/projects/mailto.png" alt="MaiTo Generator" loading="lazy"></div>
-                        <div class="project-info">
-                            <h3 class="project-title">MailTo Generator</h3>
-                            <p class="project-description">A feature rich and beautiful Mailto link and QR code generator.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">HTML</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://mailtolink.org" target="_blank" class="project-link button-primary"><i class="fas fa-external-link-alt"></i> Live</a>
-                                <a href="https://go.nimd.me/github/MailTo-website" target="_blank" class="project-link button-secondary"><i class="fab fa-github"></i> Source</a>
-                            </div>
-                        </div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-delay="350">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+							</div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fa-brands fa-cloudflare"></i>
+                        <span>Cloudflare</span>
                     </div>
-
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="project-image"><img src="assets/projects/lmgtfy.png" alt="lmgtfy Generator" loading="lazy"></div>
-                        <div class="project-info">
-                            <h3 class="project-title">lmgtfy</h3>
-                            <p class="project-description">Let Me Google That For You. For when someone is too lazy to google.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">HTML</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://lmgtfy.nimd.me" target="_blank" class="project-link button-primary"><i class="fas fa-external-link-alt"></i> Live</a>
-                            </div>
-                        </div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-delay="450">
+                        <i class="fas fa-database"></i>
+                        <span>Firebase</span>
                     </div>
-                    
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="250">
-                        <div class="project-image"><img src="assets/projects/endpoem.png" alt="End Poem Wrapper" loading="lazy"></div>
-                        <div class="project-info">
-                            <h3 class="project-title">End Poem</h3>
-                            <p class="project-description">A beautiful and immersive wrapper to display End Poem by Julian Gough.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">HTML</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://end.nimd.me" target="_blank" class="project-link button-primary"><i class="fas fa-external-link-alt"></i> Live</a>
-                            </div>
-                        </div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
+                        <i class="fa-brands fa-aws"></i>
+                        <span>AWS</span>
                     </div>
-                    
+                    <div class="skill-card" data-aos="fade-up" data-aos-delay="550">
+                        <i class="fa-solid fa-network-wired"></i>
+                        <span>Networking</span>
+                    </div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-delay="600">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-delay="650">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-delay="700">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-card" data-aos="fade-up" data-aos-delay="750">
+                        <i class="fab fa-figma"></i>
+                        <span>Figma</span>
+                    </div>
+						 
                 </div>
             </div>
         </section>
 
+        <!-- PROJECTS SECTION (Interactive Cards) -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Selected Works</h2>
+                <div class="projects-grid">
+                    
+                    <!-- Project 1 -->
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="project-thumb">
+                            <img src="assets/projects/short.png" alt="Tiny Links" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="https://tiny.nimd.me" target="_blank" class="icon-btn" title="Live View"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://go.nimd.me/github/URL-Shortener" target="_blank" class="icon-btn" title="Source Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Tiny Links</h3>
+                            <p class="project-desc">A powerful URL shortener using is.gd and v.gd API</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">API</span>
+                                <span class="tech-pill">HTML</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-thumb">
+                            <img src="assets/projects/reimage.png" alt="ReImage" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="https://reimage.nimd.me" target="_blank" class="icon-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://go.nimd.me/github/ReImage-Image-Manipulator" target="_blank" class="icon-btn"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">ReImage</h3>
+                            <p class="project-desc">Client-side image processor for resizing, converting, and optimizing assets without server upload.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">CSS</span>
+                                <span class="tech-pill">HTML</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-thumb">
+                            <img src="assets/projects/mailto.png" alt="MailTo Gen" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="https://mailtolink.org" target="_blank" class="icon-btn"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://go.nimd.me/github/MailTo-website" target="_blank" class="icon-btn"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">MailTo Gen</h3>
+                            <p class="project-desc">A utility tool for professionals to generate complex mailto links and QR codes instantly.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">QR Gen</span>
+                                <span class="tech-pill">HTML</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4 -->
+                    <article class="project-card" data-aos="fade-up">
+                         <div class="project-thumb">
+                            <img src="assets/projects/lmgtfy.png" alt="LMGTFY" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="https://lmgtfy.nimd.me" target="_blank" class="icon-btn"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">LMGTFY</h3>
+                            <p class="project-desc">A satirical "Let Me Google That For You" tool for the modern era.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">CSS</span>
+                                <span class="tech-pill">HTML</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 5 -->
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                         <div class="project-thumb">
+                            <img src="assets/projects/endpoem.png" alt="End Poem" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="https://end.nimd.me" target="_blank" class="icon-btn"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">End Poem</h3>
+                            <p class="project-desc">An atmospheric visual wrapper for the Minecraft End Poem.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">CSS</span>
+                                <span class="tech-pill">HTML</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION (Bold CTA) -->
         <section id="contact" class="contact">
             <div class="container">
-                <div class="contact-container" data-aos="fade-up">
-                    <h2 class="section-title">Let's Connect</h2>
-                    <p>
-                        Want to say Hi? Email me.
-                    </p>
-                    <div class="contact-links">
-                        <a href="https://go.nimd.me/email" class="contact-button-lg" data-aos="fade-up" data-aos-delay="100">
-                            <i class="fas fa-envelope"></i> Send Email
-                        </a>
-                        <a href="https://go.nimd.me/signal" class="contact-button-lg" data-aos="fade-up" data-aos-delay="200">
-                            <i class="fa-brands fa-signal-messenger"></i> Message on Signal
-                        </a>
-                        <a href="https://go.nimd.me/linkedin" class="contact-button-lg" data-aos="fade-up" data-aos-delay="300">
-                            <i class="fab fa-linkedin"></i> Connect on LinkedIn
-                        </a>
+                <div class="cta-card" data-aos="zoom-in">
+                    <div class="cta-shape s1"></div>
+                    <div class="cta-shape s2"></div>
+                    
+                    <div class="cta-content">
+                        <h2 class="cta-title">Want to find me?</h2>
+                        <p class="cta-text">
+                            I'm currently available on following platforms. Send me an email.
+                        </p>
+                        <div class="cta-btn-group">
+                            <a href="https://go.nimd.me/email" class="btn-outline-white">
+                                <i class="fas fa-envelope"></i> Send Email
+                            </a>
+                            <a href="https://go.nimd.me/linkedin" class="btn-outline-white">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="https://go.nimd.me/signal" class="btn-outline-white">
+                                <i class="fa-brands fa-signal-messenger"></i> Signal
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -291,17 +369,14 @@
 
     <footer>
         <div class="container">
-            <p class="footer-text">Crafted with love, code, and caffeine by NiMD</p>
+            <p class="footer-text">
+            	Crafted with <i class="fas fa-heart" style="color: #ef4444;"></i> by NiMD.
+            </p>
         </div>
     </footer>
-
-    <button class="scroll-top" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-	 <script src="assets/script.js"></script>
 	
+	 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 </html>

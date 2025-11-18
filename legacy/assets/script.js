@@ -1,66 +1,103 @@
-
-        window.addEventListener('load', () => {
-            const loader = document.querySelector('.loader');
-            // Small delay to ensure fonts/assets are ready
-            setTimeout(() => {
-                loader.classList.add('loaded');
-            }, 600);
-        });
-
-        // --- AOS ANIMATION ---
         AOS.init({
             once: true,
-            duration: 800,
-            offset: 50,
+            duration: 1000,
+            easing: 'ease-out-back',
         });
 
-        // --- NAVIGATION ---
-        const navMenu = document.querySelector('.nav-menu');
-        const menuBtn = document.querySelector('.menu-btn');
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
         
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = menuBtn.querySelector('i');
-            if(navMenu.classList.contains('active')){
-                icon.classList.replace('fa-bars', 'fa-times');
+        const setInitialTheme = () => {
+            const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+            document.body.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
             } else {
-                icon.classList.replace('fa-times', 'fa-bars');
+                 themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        };
+
+        const toggleTheme = () => {
+            const newTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // New smooth fade/move animation
+            themeIcon.style.opacity = '0';
+            themeIcon.style.transform = 'translate(-50%, -50%) translateY(-10px)';
+            
+            setTimeout(() => {
+                if (newTheme === 'dark') {
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                }
+                // Prepare for fade in (move from bottom)
+                themeIcon.style.transform = 'translate(-50%, -50%) translateY(10px)';
+                // Force browser reflow
+                void themeIcon.offsetWidth; 
+                // Fade back in
+                themeIcon.style.opacity = '1';
+                themeIcon.style.transform = 'translate(-50%, -50%) translateY(0)';
+            }, 300); // Must match transition duration
+        };
+        
+        setInitialTheme();
+        themeToggle.addEventListener('click', toggleTheme);
+        
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const menuIcon = mobileMenuButton.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
             }
         });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuButton.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+                }
             });
         });
 
-        // --- THEME TOGGLE ---
-        const themeToggle = document.querySelector('.theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-        
-        function setTheme(isDark) {
-            document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
-            themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        }
-        
-        // Init Theme
-        const savedTheme = localStorage.getItem('theme');
-        if(savedTheme) {
-            setTheme(savedTheme === 'dark');
-        } else {
-            setTheme(prefersDark.matches);
-        }
+        const scrollTopButton = document.querySelector('.scroll-top');
 
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.body.getAttribute('data-theme') === 'dark';
-            setTheme(!isDark);
-            localStorage.setItem('theme', !isDark ? 'dark' : 'light');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) { 
+                scrollTopButton.classList.add('visible');
+            } else {
+                scrollTopButton.classList.remove('visible');
+            }
         });
 
-        // --- TYPED.JS (Restored Original Phrases) ---
-        const allStrings = [
+        scrollTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 500);
+        });
+        
+document.addEventListener('DOMContentLoaded', () => {
+    const typedElement = document.querySelector('.typed-text');
+
+    // 1. Define the array of strings first
+    const allStrings = [
         "beautiful interfaces.",
         "simple web apps.",
         "networking masterpieces.",
@@ -89,7 +126,7 @@
         "syntax that sings.",
         "aesthetic lag moments.",
         "clouds that don’t rain.",
-        "the future, one div at a time.", 
+        "the future, one div at a time.", // <-- Added missing comma here
         "solutions that work on my machine.",
         "perfectly centered divs (eventually).",
         "comments that actually explain the code.",
@@ -189,79 +226,34 @@
         "logic bombs with glitter."
     ];
 
+    // 2. Shuffle the array in-place (Fisher-Yates algorithm)
+    let currentIndex = allStrings.length;
+    let randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex !== 0) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [allStrings[currentIndex], allStrings[randomIndex]] = [
+            allStrings[randomIndex], allStrings[currentIndex]
+        ];
+    }
+
+    // 3. Now initialize Typed.js with the *shuffled* array
+    if (typedElement && typeof Typed !== 'undefined') {
         new Typed('.typed-text', {
-            strings: allStrings,
+            strings: allStrings, // Pass the shuffled array here
             typeSpeed: 50,
             backSpeed: 25,
             loop: true,
-            shuffle: true,
-            backDelay: 1500
+            showCursor: false
         });
-
-        // --- HERO PARTICLES (Optimized) ---
-        const canvas = document.getElementById('hero-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = Math.random() * 0.5 - 0.25;
-                this.vy = Math.random() * 0.5 - 0.25;
-                this.size = Math.random() * 2;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if(this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if(this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-            draw() {
-                ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--accent-color');
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const count = Math.floor(window.innerWidth / 20); // Responsive count
-            for(let i=0; i<count; i++) particles.push(new Particle());
-        }
-        initParticles();
-
-        function animate() {
-            ctx.clearRect(0,0,canvas.width, canvas.height);
-            const accentColor = getComputedStyle(document.body).getPropertyValue('--accent-color');
-            
-            particles.forEach((p, index) => {
-                p.update();
-                p.draw();
-                // Connections
-                for(let j=index; j<particles.length; j++) {
-                    const dx = p.x - particles[j].x;
-                    const dy = p.y - particles[j].y;
-                    const dist = Math.sqrt(dx*dx + dy*dy);
-                    if(dist < 100) {
-                        ctx.strokeStyle = accentColor;
-                        ctx.globalAlpha = 1 - (dist/100);
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                        ctx.globalAlpha = 1;
-                    }
-                }
-            });
-            requestAnimationFrame(animate);
-        }
-        animate();
+    } else if (!typedElement) {
+        console.error("Typed.js: '.typed-text' element not found.");
+    } else {
+        console.error("Typed.js library not loaded.");
+    }
+});
